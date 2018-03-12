@@ -25,9 +25,11 @@ $(document).ready(function(){
             return Math.floor(Math.random() * this.multipler);
         },
     }
-    let jediOne = "";
-    let jediTwo = "";
+
+    let jediOne;
+    let jediTwo;
     let ifChosenFirst = false;
+
 
     function isJediDead(jedi) {
         if (jedi.health <= 0) {
@@ -77,10 +79,24 @@ $(document).ready(function(){
     });
 
     $("#luke").on('click', function() {
-        if (ifChosenFirst === false)
-        jediOne = luke;
-        console.log(jediOne);
+        if (ifChosenFirst === false) {
+            let jediOne=luke;
+
+        } else {
+            jediTwo = luke;
+
+        }
     });
+
+    $("#darthMaul").on('click', function() {
+        if(ifChosenFirst === false) {
+            jediOne = darthMaul;
+            console.log(jediOne);
+        } else {
+            jediTwo = darthMaul;
+            console.log(jediTwo);
+        }
+    })
 
 
 
