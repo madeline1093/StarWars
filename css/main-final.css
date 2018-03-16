@@ -1,0 +1,15 @@
+.character-image {
+    max-width: 100px;
+}
+
+.main-section-title {
+    text-align: center;
+
+}
+
+.css-main-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.css-all-characters {

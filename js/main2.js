@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    let luk;
+    let luke;
     let darthMaul;
     let obiWan;
     
@@ -7,8 +7,6 @@ $(document).ready(function(){
     let jediOne;
     let defenders = [];
     let jediTwo;
-
-    let ifChosenFirst = false;
 
     function startGame () {
         
@@ -67,10 +65,39 @@ $(document).ready(function(){
             $("<div>").html(character.name).appendTo(characterDiv);
             $("<div>").append("<img src='" + character.img + "'>").appendTo(characterDiv);
             $("<div>").append("<span class='hp'>" + character.health +"</span>").appendTo(characterDiv);
-        })
-    }
+
+            $("#characterSelection").append(characterDiv);
+        });
 
 
+        $("#jedi-one").on("click", function(){
+            if(jediOne === null){
+                console.log("picked jedi one");
+                var jediOneId = parseInt($(this).attr("id"));
+                jediOne = characterSelection[jediOneId];
+            }
+                $.each(characterSelection, function(index, jediOne){
+                    if (jediOne.id !== jediOneId) {
+                        defenders.push(jediOne);
+                        $("#" + jediOne.id).removeClass("jediOne").addClass("jediTwo").appendTo("#enemyArea");
+                    } else {
+                        $("#" + jediOne.id).appendTo("#jedi-one");
+                    }
+                })
+    
+                $("#jedi-two").on("click", function(){
+                    if (jediTwo===null) {
+                        var jediTwoId = parseInt($(this)attr("id"));
+                        console.log(this);
+                        jediTwo = characterSelection[jediTwoId];
+                        $("#" + jediTwoId).appendTo("#jedi-two");
+                    };
+                });
+            });
+        });
+    };
+
+    startGame();
 
     function isJediDead(jedi) {
         if (jedi.health <= 0) {
@@ -114,40 +141,21 @@ $(document).ready(function(){
 
     //click buttosn
     $("#attackBtn").on('click', function(){
-        // you hit them (take away points)
-        // they hit you (take away some of your points)
+        attack();
 
     });
 
 
-    $("#character").on("click", function(){
-        if (character)
-    })
-    $("#luke").on('click', function() {
-        if (ifChosenFirst === false) {
-            let jediOne=luke;
+   
 
-        } else {
-            jediTwo = luke;
-
-        }
-    });
-
-    $("#darthMaul").on('click', function() {
-        if(ifChosenFirst === false) {
-            jediOne = darthMaul;
-            console.log(jediOne);
-        } else {
-            jediTwo = darthMaul;
-            console.log(jediTwo);
-        }
-    })
+   
 
 
 
 
 
+    $('#')
 
 
 
-})
+});
